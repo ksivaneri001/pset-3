@@ -1,7 +1,5 @@
 const readlineSync = require("readline-sync");
 
-// console.log("");
-
 const MIN = 0.01;
 const MAX = 0.99;
 

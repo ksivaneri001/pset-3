@@ -6,20 +6,21 @@ const MAX = Number.MAX_SAFE_INTEGER;
 const number = readlineSync.question("\nEnter a number: ");
 
 if (Number.isNaN(number)) {
-    console.log("\nInvalid.")
+    console.log("\nInvalid.");
 }
 else if (number < MIN || number > MAX) {
     console.log("\nInvalid.");
 }
-else if (number == 0) {
-    console.log("\nZero.");
-}
-else if (number > 0) {
-    console.log("\nPositive.");
-}
-else if (number < 0) {
-    console.log("\nNegative.");
+else if (number % 1 != 0) {
+    console.log("\nInvalid.");
 }
 else {
-    console.log("\nInvalid.");
+    const evenOddCheck = number / 2;
+
+    if (evenOddCheck % 1 == 0) {
+        console.log("\nEven.");
+    }
+    else {
+        console.log("\nOdd.");
+    }
 }

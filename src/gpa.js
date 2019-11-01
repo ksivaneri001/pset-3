@@ -1,10 +1,12 @@
 const readlineSync = require("readline-sync");
 
+let nextStep = true;
+let skipFinalStep = false;
 let gpa = null;
 
 const LETTER_GRADE = readlineSync.question("\nEnter a letter grade: ");
 
-if ((LETTER_GRADE.length == 1) || (LETTER_GRADE.length == 2 && LETTER_GRADE.charAt(1) == "+" || LETTER_GRADE.charAt(1) == "-")) {
+if ((LETTER_GRADE.length == 1) || (LETTER_GRADE.length == 2 && (LETTER_GRADE.charAt(1) == "+" || LETTER_GRADE.charAt(1) == "-"))) {
 
     let letterPrefix = LETTER_GRADE.charAt(0);
 
@@ -12,33 +14,60 @@ if ((LETTER_GRADE.length == 1) || (LETTER_GRADE.length == 2 && LETTER_GRADE.char
         case "A":
         case "a":
             gpa = 4.00;
-            console.log("\nTESTING: Success.");
+            nextStep = false;
             break;
         case "B":
         case "b":
             gpa = 3.00;
-            console.log("\nTESTING: Success.");
             break;
         case "C":
         case "c":
             gpa = 2.00;
-            console.log("\nTESTING: Success.");
             break;
         case "D":
         case "d":
             gpa = 1.00;
-            console.log("\nTESTING: Success.");
             break;
         case "F":
         case "f":
             gpa = 0.00
-            console.log("\nTESTING: Success.");
+            nextStep = false;
+            if (LETTER_GRADE.charAt(1) == "+" || LETTER_GRADE.charAt(1) == "-") {
+                console.log("\nInvalid.");
+                skipFinalStep = true;
+            }
             break;
         default:
             console.log("\nInvalid.");
+            nextStep = false;
+            skipFinalStep = true;
+            break;
+    }
+
+    if (nextStep == true) {
+        if (LETTER_GRADE.charAt(1) == "+") {
+            gpa += 0.33;
+        }
+        else if (LETTER_GRADE.charAt(1) == "-") {
+            gpa -= 0.33;
+        }
+        else {
+
+        }
+    }
+    else {
+
+    }
+
+    if (skipFinalStep == false) {
+        let gpaTwoDecimals = gpa.toLocaleString("en", {minimumFractionDigits:2, maximumFractionDigits:2});
+        console.log("\nYour GPA is " + gpaTwoDecimals + ".");
+    }
+    else {
+
     }
 
 }
 else {
-    console.log("\nTESTING: This is the else statement.");
+    console.log("\nInvalid.");
 }

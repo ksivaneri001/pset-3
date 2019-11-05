@@ -8,21 +8,24 @@ const B_C_THRESHOLD = 80;
 const C_D_THRESHOLD = 70;
 const D_F_THRESHOLD = 60;
 
-const GRADE = readlineSync.question("\nEnter a letter grade: ");
+const grade = Number(readlineSync.question("\nEnter a grade: "));
 
-if (GRADE < MIN || GRADE > MAX) {
-    console.log("\nInvalid.")
+if (Number.isNaN(grade)) {
+    console.log("\nInvalid.");
 }
-else if (GRADE <= MAX && GRADE >= A_B_THRESHOLD) {
+else if (grade < MIN || grade > MAX) {
+    console.log("\nInvalid.");
+}
+else if (grade <= MAX && grade >= A_B_THRESHOLD) {
     console.log("\nYou received an A.");
 }
-else if (GRADE < A_B_THRESHOLD && GRADE >= B_C_THRESHOLD) {
+else if (grade < A_B_THRESHOLD && grade >= B_C_THRESHOLD) {
     console.log("\nYou received a B.");
 }
-else if (GRADE < B_C_THRESHOLD && GRADE >= C_D_THRESHOLD) {
+else if (grade < B_C_THRESHOLD && grade >= C_D_THRESHOLD) {
     console.log("\nYou received a C.");
 }
-else if (GRADE < C_D_THRESHOLD && GRADE >= D_F_THRESHOLD) {
+else if (grade < C_D_THRESHOLD && grade >= D_F_THRESHOLD) {
     console.log("\nYou received a D.");
 }
 else {

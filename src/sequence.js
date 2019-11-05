@@ -5,9 +5,9 @@ const MAX = Number.MAX_SAFE_INTEGER;
 
 console.log("\nEnter three numbers.");
 
-const number1 = readlineSync.question("\n");
-const number2 = readlineSync.question("");
-const number3 = readlineSync.question("");
+const number1 = Number(readlineSync.question("\n"));
+const number2 = Number(readlineSync.question(""));
+const number3 = Number(readlineSync.question(""));
 
 if (Number.isNaN(number1) || Number.isNaN(number2) || Number.isNaN(number3)) {
     console.log("\nInvalid.");

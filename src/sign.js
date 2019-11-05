@@ -3,7 +3,7 @@ const readlineSync = require("readline-sync");
 const MIN = Number.MIN_SAFE_INTEGER;
 const MAX = Number.MAX_SAFE_INTEGER;
 
-const number = readlineSync.question("\nEnter a number: ");
+const number = Number(readlineSync.question("\nEnter a number: "));
 
 if (Number.isNaN(number)) {
     console.log("\nInvalid.")
